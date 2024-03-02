@@ -3,12 +3,12 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import {
-    ArrowRight,
-    Code,
-    ImageIcon,
-    MessageSquare,
-    Music,
-    VideoIcon
+	ArrowRight,
+	Code,
+	ImageIcon,
+	MessageSquare,
+	Music,
+	VideoIcon,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -50,8 +50,8 @@ const tools = [
 	},
 ];
 
-const DashboardPage = () => {
-    const router = useRouter();
+export default function HomePage() {
+	const router = useRouter();
 	return (
 		<div>
 			<div className="mb-8 space-y-4">
