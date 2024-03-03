@@ -50,12 +50,12 @@ export async function POST(req: Request) {
       model: "gpt-3.5-turbo",
       messages: [instructionMessage, ...messages],
     });
-    console.log(response);
+    // console.log(response);
 
     // if (!isPro) {
     //   await incrementApiLimit();
     // }
-    console.log(response);
+    // console.log(response);
 
     return NextResponse.json(response.choices[0].message);
   } catch (error) {

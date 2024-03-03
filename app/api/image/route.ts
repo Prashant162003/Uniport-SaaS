@@ -53,7 +53,7 @@ export async function POST(req: Request) {
 			n: parseInt(amount, 10),
             size: resolution,
         });
-        console.log(response);
+        // console.log(response);
 
 		// if (!isPro) {
 		// 	await incrementApiLimit();

@@ -49,14 +49,14 @@ const CodePage = () => {
       };
       const newMessages = [...messages, userMessage];
 
-      console.log(newMessages[newMessages.length - 1]);
+      // console.log(newMessages[newMessages.length - 1]);
 
       const response = await axios.post("/api/code", {
         messages: newMessages,
       });
       setMessages((current) => [...current, userMessage, response.data]);
 
-      console.log(response);
+      // console.log(response);
 
       form.reset();
     } catch (error: any) {

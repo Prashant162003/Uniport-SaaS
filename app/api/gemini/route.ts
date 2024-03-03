@@ -52,12 +52,12 @@ export async function POST(req: Request) {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
 
     const prompt = messages[messages.length - 1].content;
-    console.log("prompt", prompt);
+    // console.log("prompt", prompt);
 
     const result = await model.generateContent(prompt);
     const response = result.response;
     const text = response.text();
-    console.log(text);
+    // console.log(text);
 
     return NextResponse.json(text);
   } catch (error) {

@@ -49,7 +49,7 @@ const CodePage = () => {
       const newMessages = [...messages, userMessage];
 
       // console.log(newMessages[newMessages.length - 1]);
-      console.log("userMessage", userMessage);
+      // console.log("userMessage", userMessage);
 
       const response = await axios.post("/api/gemini", {
         messages: newMessages,
