@@ -11,11 +11,14 @@ import {
   Music,
   Settings,
   VideoIcon,
+  Gem,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 // import { FreeCounter } from "@/components/free-counter";
+import { Badge } from "@/components/ui/badge";
+import { FreeCounter } from "./free-counter";
 
 const poppins = Montserrat({ weight: "600", subsets: ["latin"] });
 
@@ -57,6 +60,12 @@ const routes = [
     href: "/code",
   },
   {
+    label: "Gemini",
+    icon: Gem,
+    color: "text-pink-700",
+    href: "/gemini",
+  },
+  {
     label: "Settings",
     icon: Settings,
     href: "/settings",
@@ -67,50 +76,42 @@ export const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-		<div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
-			<div className="px-3 py-2 flex-1">
-				<Link
-					href="/dashboard"
-					className="flex items-center pl-3 mb-14"
-				>
-					<div className="relative h-8 w-8 mr-4">
-						<Image fill alt="Logo" src="/logo.png" />
-					</div>
-					<h1
-						className={cn(
-							"text-2xl font-bold text-white",
-							poppins.className
-						)}
-					>
-						Uniport
-					</h1>
-				</Link>
-				<div className="space-y-1">
-					{routes.map((route) => (
-						<Link
-							key={route.href}
-							href={route.href}
-							className={cn(
-								"text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
-								pathname === route.href
-									? "text-white bg-white/10"
-									: "text-zinc-400"
-							)}
-						>
-							<div className="flex items-center flex-1">
-								<route.icon
-									className={cn("h-5 w-5 mr-3", route.color)}
-								/>
-								{route.label}
-							</div>
-						</Link>
-					))}
-				</div>
-			</div>
-			{/* <FreeCounter 
-        apiLimitCount={apiLimitCount} 
-        isPro={isPro}
-      /> */}
-		</div>
+    <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
+      <div className="px-3 py-2 flex-1">
+        <Link href="/dashboard" className="flex items-center pl-3 mb-14">
+          <div className="relative h-8 w-8 mr-4">
+            <Image fill alt="Logo" src="/logo.png" />
+          </div>
+          <h1
+            className={cn("text-2xl font-bold text-white", poppins.className)}
+          >
+            Uniport
+          </h1>
+        </Link>
+        <div className="space-y-1">
+          {routes.map((route) => (
+            <Link
+              key={route.href}
+              href={route.href}
+              className={cn(
+                "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer hover:text-white hover:bg-white/10 rounded-lg transition",
+                pathname === route.href
+                  ? "text-white bg-white/10"
+                  : "text-zinc-400"
+              )}
+            >
+              <div className="flex items-center flex-1">
+                <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
+                {route.label}
+                {route.href === "/gemini" && (
+                  <Badge className="ml-3 bg-pink-500 animate-pulse">new</Badge>
+                )}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+      <FreeCounter apiLimitCount={5} isPro={false} />
+    </div>
   );
 };
